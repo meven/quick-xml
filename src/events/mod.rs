@@ -114,15 +114,23 @@ impl<'a> BytesStart<'a> {
     /// let tag = b"&quot;for_real&quot;";
     /// let attributes = [("ascii", "as_you_expect"),
     ///                   ("with_escapes", "& becomes &amp;")];
-    /// // This correspondes to the following xml snippet
-    /// // <&quot;for_real&quot; ascii="as_you_expect" with_escapes="&amp; becomes &amp;">
     /// let xml_with_attributes = BytesStart::borrowed(tag, tag.len())
     ///     .with_attributes(attributes.iter().map(|x| *x));
     ///
-    /// let unescaped = xml_with_attributes.unescaped().unwrap();
+    /// // This corresponds to the following xml snippet (<data>)
+    /// let data = "&quot;for_real&quot; ascii=\"as_you_expect\" with_escapes=\"&amp; becomes &amp;amp;\"";
+    /// assert_eq!(data.as_bytes(), &*xml_with_attributes);
     ///
-    /// // `.unescaped()` only returns an unescaped tag name
+    /// // `BytesStart::unescaped` only returns an unescaped tag name
+    /// let unescaped = xml_with_attributes.unescaped().expect("error while unescaping");
     /// assert_eq!(unescaped.as_ref(), b"\"for_real\"");
+    ///
+    /// // use `Attribute::unescaped_value` to get unescaped attribute values
+    /// for (a, v) in xml_with_attributes.attributes().zip(attributes.iter()) {
+    ///     let a = a.expect("error while parsing attributes");
+    ///     let unescaped_value = a.unescaped_value().expect("error while unescaping");
+    ///     assert_eq!(&*unescaped_value, v.1.as_bytes());
+    /// }
     /// ```
     ///
     pub fn unescaped(&self) -> Result<Cow<[u8]>> {
