@@ -2,8 +2,8 @@
 
 use std::io::Write;
 
-use errors::{Error, Result};
-use events::Event;
+use crate::errors::{Error, Result};
+use crate::events::Event;
 
 /// XML writer.
 ///

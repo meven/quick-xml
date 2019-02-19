@@ -8,9 +8,9 @@ use std::str::from_utf8;
 
 use encoding_rs::Encoding;
 
-use errors::{Error, Result};
-use events::attributes::Attribute;
-use events::{BytesDecl, BytesEnd, BytesStart, BytesText, Event};
+use crate::errors::{Error, Result};
+use crate::events::attributes::Attribute;
+use crate::events::{BytesDecl, BytesEnd, BytesStart, BytesText, Event};
 
 use memchr;
 

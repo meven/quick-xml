@@ -9,9 +9,9 @@ use std::ops::Deref;
 use std::str::from_utf8;
 
 use self::attributes::{Attribute, Attributes};
-use errors::{Error, Result};
-use escape::{escape, unescape};
-use reader::Reader;
+use crate::errors::{Error, Result};
+use crate::escape::{escape, unescape};
+use crate::reader::Reader;
 
 use memchr;
 

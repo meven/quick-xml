@@ -117,6 +117,6 @@ mod reader;
 mod writer;
 
 // reexports
-pub use errors::{Error, Result};
-pub use reader::Reader;
-pub use writer::Writer;
+pub use crate::errors::{Error, Result};
+pub use crate::reader::Reader;
+pub use crate::writer::Writer;

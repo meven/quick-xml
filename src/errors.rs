@@ -57,7 +57,7 @@ pub enum Error {
     DuplicatedAttribute(usize, usize),
 
     #[fail(display = "{}", _0)]
-    EscapeError(#[cause] ::escape::EscapeError),
+    EscapeError(#[cause] crate::escape::EscapeError),
 }
 
 impl From<::std::io::Error> for Error {

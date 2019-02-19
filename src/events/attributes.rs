@@ -2,9 +2,9 @@
 //!
 //! Provides an iterator over attributes key/value pairs
 
-use errors::{Error, Result};
-use escape::{escape, unescape};
-use reader::{is_whitespace, Reader};
+use crate::errors::{Error, Result};
+use crate::escape::{escape, unescape};
+use crate::reader::{is_whitespace, Reader};
 use std::borrow::Cow;
 use std::io::BufRead;
 use std::ops::Range;

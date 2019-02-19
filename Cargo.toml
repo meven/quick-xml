@@ -11,6 +11,7 @@ readme = "README.md"
 keywords = ["xml", "reader", "parser", "writer", "html"]
 categories = ["encoding", "parsing", "text-processing"]
 license = "MIT"
+edition = "2018"
 
 [badges]
 travis-ci = { repository = "tafia/quick-xml" }
